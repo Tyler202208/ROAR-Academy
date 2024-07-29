@@ -15,7 +15,7 @@ try:
     path = os.path.dirname(os.path.abspath(__file__))
     # Open source file and the result file
     source_handle = open(path+'/'+source_filename,'r')
-    hashtag_handle = open(path+'/'+hashtag_filename,'wb+')
+    hashtag_handle = open(path+'/'+hashtag_filename,'w+')
 
     md5 = hashlib.md5()
     for line in source_handle:
@@ -23,7 +23,7 @@ try:
         md5.update(byte_array)
 
     # Write the binary digest values
-    hashtag_handle.write(md5.digest())
+    hashtag_handle.write(md5.hexdigest())
 
     # Re-read from the beginning to verify
     hashtag_handle.seek(0)
